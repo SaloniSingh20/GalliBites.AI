@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GalliBites.AI for Vendors</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!-- Authentication Section -->
+<div id="auth-container" class="auth-container">
+    <!-- Landing Page -->
+    <div id="landing-page" class="auth-page active">
+        <div class="auth-card">
+            <div class="auth-logo">
+                <h1>🍛 GalliBites.AI</h1>
+                <p>for Street Food Vendors</p>
+                <!-- Removed Hindi tagline -->
+            </div>
+            <div class="welcome-content">
+                <h2>Welcome to the Future of Street Food Business!</h2>
+                <p>Join thousands of vendors who are already saving money and growing their business with our AI-powered platform.</p>
+                <div class="features-preview">
+                    <div class="feature-item">🛒 Smart Marketplace</div>
+                    <div class="feature-item">📊 AI Inventory Management</div>
+                    <div class="feature-item">👥 Group Buying</div>
+                    <div class="feature-item">💰 Save up to 30%</div>
+                </div>
+            </div>
+            <div class="auth-actions">
+                <button class="btn btn--primary btn--full-width" id="goto-login">Login</button>
+                <button class="btn btn--outline btn--full-width" id="goto-signup">New Vendor Signup</button>
+            </div>
+            <div class="demo-access">
+                <p>Want to see how it works?</p>
+                <button class="btn btn--secondary" id="demo-login">Try Demo Account</button>
+            </div>
+        </div>
+    </div>
+    <!-- Login Page -->
+    <div id="login-page" class="auth-page">
+        <div class="auth-card">
+            <div class="auth-header">
+                <button class="back-btn" id="back-to-landing">←</button>
+                <h2>Login</h2>
+            </div>
+            <form id="login-form" class="auth-form">
+                <div class="form-group">
+                    <label class="form-label" for="login-email">Email or Phone</label>
+                    <input type="text" id="login-email" class="form-control" placeholder="Enter your email or phone number" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="login-password">Password</label>
+                    <input type="password" id="login-password" class="form-control" placeholder="Enter your password" required>
+                </div>
+                <div class="form-options">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="remember-me">
+                        <span>Remember me</span>
+                    </label>
+                    <a href="#" id="forgot-password">Forgot Password?</a>
+                </div>
+                <button type="submit" class="btn btn--primary btn--full-width">
+                    <span class="btn-text">Login</span>
+                    <span class="btn-loader hidden">Logging in...</span>
+                </button>
+                <div class="auth-switch">
+                    <p>Don't have an account? <a href="#" id="switch-to-signup">Sign up</a></p>
+                </div>
+            </form>
+            <div class="demo-accounts">
+                <h4>Demo Accounts:</h4>
+                <div class="demo-account" data-email="raju.samosa@gmail.com" data-password="password123">
+                    <strong>Raju Bhaiya</strong> - Samosa Corner, Dadar
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Signup Page -->
+    <div id="signup-page" class="auth-page">
+        <div class="auth-card">
+            <div class="auth-header">
+                <button class="back-btn" id="back-to-landing-signup">←</button>
+                <h2>Vendor Registration</h2>
+            </div>
+            <form id="signup-form" class="auth-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label" for="signup-name">Full Name *</label>
+                        <input type="text" id="signup-name" class="form-control" placeholder="Your full name" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="signup-business">Business Name *</label>
+                        <input type="text" id="signup-business" class="form-control" placeholder="Your business name" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label" for="signup-phone">Phone Number *</label>
+                        <input type="tel" id="signup-phone" class="form-control" placeholder="+91 XXXXXXXXXX" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="signup-email">Email Address *</label>
+                        <input type="email" id="signup-email" class="form-control" placeholder="your@email.com" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label" for="signup-location">Location/City *</label>
+                        <input type="text" id="signup-location" class="form-control" placeholder="City, Area" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="signup-specialty">Food Specialty *</label>
+                        <select id="signup-specialty" class="form-control" required>
+                            <option value="">Select specialty</option>
+                            <option value="chaat">Chaat & Snacks</option>
+                            <option value="samosa">Samosa & Pakoda</option>
+                            <option value="dosa">South Indian</option>
+                            <option value="pav-bhaji">Pav Bhaji</option>
+                            <option value="biryani">Biryani & Rice</option>
+                            <option value="sweets">Sweets & Desserts</option>
+                            <option value="beverages">Beverages</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="signup-fssai">FSSAI License Number (Optional)</label>
+                    <input type="text" id="signup-fssai" class="form-control" placeholder="14-digit FSSAI license number">
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label" for="signup-password">Password *</label>
+                        <input type="password" id="signup-password" class="form-control" placeholder="Create a strong password" required>
+                        <div class="password-strength">
+                            <div class="strength-bar">
+                                <div class="strength-fill"></div>
+                            </div>
+                            <span class="strength-text">Password strength</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="signup-confirm-password">Confirm Password *</label>
+                        <input type="password" id="signup-confirm-password" class="form-control" placeholder="Confirm your password" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="terms-accept" required>
+                        <span>I agree to the <a href="#" target="_blank">Terms & Conditions</a> and <a href="#" target="_blank">Privacy Policy</a></span>
+                    </label>
+                </div>
+                <button type="submit" class="btn btn--primary btn--full-width">
+                    <span class="btn-text">Create Account</span>
+                    <span class="btn-loader hidden">Creating account...</span>
+                </button>
+                <div class="auth-switch">
+                    <p>Already have an account? <a href="#" id="switch-to-login">Login</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Main Application (Hidden initially) -->
+<div id="main-app" class="main-app hidden">
+    <!-- Header -->
+    <header class="header">
+        <div class="header__content">
+            <div class="header__logo">
+                <h1>🍛 GalliBites.AI</h1>
+                <span>for Vendors</span>
+            </div>
+            <div class="header__profile">
+                <span id="user-greeting"></span>
+                <div class="profile-dropdown">
+                    <div class="profile-pic" id="profile-trigger">👨‍🍳</div>
+                    <div class="profile-menu hidden" id="profile-menu">
+                        <div class="profile-info">
+                            <strong id="profile-name">User</strong>
+                            <span id="profile-business">Business</span>
+                        </div>
+                        <div class="profile-actions">
+                            <button class="profile-action" id="view-profile">👤 View Profile</button>
+                            <button class="profile-action" id="settings">⚙️ Settings</button>
+                            <button class="profile-action" id="logout">🚪 Logout</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <nav class="nav">
+            <button class="nav__item active" data-section="dashboard">
+                <span class="nav__icon">🏠</span>
+                <span>Dashboard</span>
+            </button>
+            <button class="nav__item" data-section="marketplace">
+                <span class="nav__icon">🛒</span>
+                <span>Marketplace</span>
+            </button>
+            <button class="nav__item" data-section="inventory">
+                <span class="nav__icon">📦</span>
+                <span>Inventory</span>
+            </button>
+            <button class="nav__item" data-section="suppliers">
+                <span class="nav__icon">🏪</span>
+                <span>Suppliers</span>
+            </button>
+            <button class="nav__item" data-section="group-buying">
+                <span class="nav__icon">👥</span>
+                <span>Group Buy</span>
+            </button>
+            <button class="nav__item" data-section="community">
+                <span class="nav__icon">💬</span>
+                <span>Community</span>
+            </button>
+            <button class="nav__item" data-section="learning">
+                <span class="nav__icon">📚</span>
+                <span>Learning</span>
+            </button>
+        </nav>
+    </header>
+    <main class="main">
+        <!-- Dashboard Section -->
+        <section id="dashboard" class="section active">
+            <div class="container">
+                <div class="dashboard__welcome">
+                    <h2 id="dashboard-greeting">Welcome back! 🙏</h2>
+                    <p id="dashboard-business-info">Loading...</p>
+                </div>
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-card__icon">💰</div>
+                        <div class="metric-card__content">
+                            <h3>Monthly Savings</h3>
+                            <div class="metric-value">₹3,200</div>
+                            <div class="metric-change positive">+12% this month</div>
+                        </div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-card__icon">📦</div>
+                        <div class="metric-card__content">
+                            <h3>Low Stock Items</h3>
+                            <div class="metric-value">3</div>
+                            <div class="metric-change warning">Need attention</div>
+                        </div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-card__icon">🚚</div>
+                        <div class="metric-card__content">
+                            <h3>Next Delivery</h3>
+                            <div class="metric-value">Tomorrow</div>
+                            <div class="metric-change">Potatoes - 25kg</div>
+                        </div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-card__icon">⭐</div>
+                        <div class="metric-card__content">
+                            <h3>Your Rating</h3>
+                            <div class="metric-value">4.5/5</div>
+                            <div class="metric-change positive">Excellent vendor!</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="alerts-section">
+                    <h3>🤖 AI Recommendations & Alerts</h3>
+                    <div class="alert urgent">
+                        <div class="alert__icon">🍅</div>
+                        <div class="alert__content">
+                            <h4>Price Alert: Tomatoes</h4>
+                            <p>Price dropped 12% at Dadar Market - Good time to stock up!</p>
+                            <span class="alert__savings">Save ₹8 per kg</span>
+                        </div>
+                        <button class="btn btn--sm btn--primary">Order Now</button>
+                    </div>
+                    <div class="alert">
+                        <div class="alert__icon">🥔</div>
+                        <div class="alert__content">
+                            <h4>Reorder Alert: Potatoes</h4>
+                            <p>Only 2 days stock left. Current usage: 8kg/day</p>
+                        </div>
+                        <button class="btn btn--sm btn--outline">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="quick-actions">
+                    <h3>Quick Actions</h3>
+                    <div class="action-buttons">
+                        <button class="action-btn" data-action="place-order">
+                            <span class="action-btn__icon">🛒</span>
+                            <span>Place Order</span>
+                        </button>
+                        <button class="action-btn" data-action="check-prices">
+                            <span class="action-btn__icon">💲</span>
+                            <span>Check Prices</span>
+                        </button>
+                        <button class="action-btn" data-action="contact-supplier">
+                            <span class="action-btn__icon">📞</span>
+                            <span>Contact Supplier</span>
+                        </button>
+                        <button class="action-btn" data-action="join-group">
+                            <span class="action-btn__icon">👥</span>
+                            <span>Join Group Buy</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Marketplace Section -->
+        <section id="marketplace" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Raw Material Marketplace</h2>
+                    <div class="search-bar">
+                        <input type="text" placeholder="Search products..." class="form-control">
+                        <button class="btn btn--primary">🔍</button>
+                    </div>
+                </div>
+                <div class="categories">
+                    <button class="category-btn active" data-category="all">All</button>
+                    <button class="category-btn" data-category="vegetables">🥬 Vegetables</button>
+                    <button class="category-btn" data-category="spices">🌶️ Spices</button>
+                    <button class="category-btn" data-category="grains">🌾 Grains</button>
+                    <button class="category-btn" data-category="oil">🛢️ Oil & Ghee</button>
+                    <button class="category-btn" data-category="packaging">📦 Packaging</button>
+                </div>
+                <div class="products-grid" id="products-grid">
+                    <!-- Products will be dynamically loaded -->
+                </div>
+            </div>
+        </section>
+        <!-- Inventory Section -->
+        <section id="inventory" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>📦 Inventory Management</h2>
+                    <button class="btn btn--primary">Add Manual Entry</button>
+                </div>
+                <div class="inventory-overview">
+                    <div class="inventory-stats">
+                        <div class="stat">
+                            <h3>Total Items</h3>
+                            <div class="stat-value">24</div>
+                        </div>
+                        <div class="stat">
+                            <h3>Low Stock</h3>
+                            <div class="stat-value warning">3</div>
+                        </div>
+                        <div class="stat">
+                            <h3>Expiring Soon</h3>
+                            <div class="stat-value danger">1</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="inventory-list">
+                    <!-- Inventory items will be dynamically loaded -->
+                </div>
+                <div class="ai-suggestions">
+                    <h3>🤖 AI Suggestions</h3>
+                    <div class="suggestion-card">
+                        <h4>Waste Reduction Tip</h4>
+                        <p>Your onion usage has decreased by 15% this week. Consider reducing next order by 2kg to prevent wastage.</p>
+                    </div>
+                    <div class="suggestion-card">
+                        <h4>Seasonal Advice</h4>
+                        <p>Potato prices typically rise by 20% next month. Consider stocking up now.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Suppliers Section -->
+        <section id="suppliers" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>🏪 Verified Suppliers</h2>
+                    <div class="filter-controls">
+                        <select class="form-control">
+                            <option>All Locations</option>
+                            <option>Dadar Market</option>
+                            <option>Crawford Market</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="suppliers-list">
+                    <!-- Suppliers will be dynamically loaded -->
+                </div>
+            </div>
+        </section>
+        <!-- Group Buying Section -->
+        <section id="group-buying" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>👥 Group Buying</h2>
+                    <button class="btn btn--primary">Create Group Buy</button>
+                </div>
+                <div class="active-groups">
+                    <h3>Active Group Buys</h3>
+                    <div class="group-buy-card">
+                        <div class="group-header">
+                            <h3>🥔 Potatoes - Bulk Order</h3>
+                            <div class="time-left">⏰ 13h left</div>
+                        </div>
+                        <div class="group-progress">
+                            <div class="progress-info">
+                                <span>67/100 kg ordered</span>
+                                <span>8 vendors joined</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 67%"></div>
+                            </div>
+                        </div>
+                        <div class="pricing-info">
+                            <div class="price-comparison">
+                                <span class="group-price">₹24/kg</span>
+                                <span class="regular-price">₹28/kg</span>
+                                <span class="savings">Save ₹4/kg</span>
+                            </div>
+                        </div>
+                        <div class="group-organizer">
+                            <p>Organized by: Street Food Association - Dadar</p>
+                        </div>
+                        <div class="group-actions">
+                            <button class="btn btn--outline">View Details</button>
+                            <button class="btn btn--primary">Join Group</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="savings-calculator">
+                    <h3>💰 Savings Calculator</h3>
+                    <div class="calculator-card">
+                        <p>By joining group buys this month, you could save:</p>
+                        <div class="potential-savings">₹1,200 - ₹2,800</div>
+                        <p>Based on your typical monthly orders</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Community Section -->
+        <section id="community" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>💬 Community Forum</h2>
+                    <button class="btn btn--primary">New Post</button>
+                </div>
+                <div class="community-tabs">
+                    <button class="tab-btn active">Recent Posts</button>
+                    <button class="tab-btn">Market Updates</button>
+                    <button class="tab-btn">Success Stories</button>
+                    <button class="tab-btn">Q&A</button>
+                </div>
+                <div class="posts-list">
+                    <!-- Community posts will be dynamically loaded -->
+                </div>
+            </div>
+        </section>
+        <!-- Learning Section -->
+        <section id="learning" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>📚 Knowledge Center</h2>
+                    <div class="language-toggle">
+                        <button class="lang-btn active">English</button>
+                        <!-- Removed Hindi button -->
+                    </div>
+                </div>
+                <div class="learning-categories">
+                    <div class="learning-category">
+                        <h3>🏆 Certifications</h3>
+                        <div class="course-card">
+                            <div class="course-info">
+                                <h4>FSSAI Food Safety Basics</h4>
+                                <p>⏱️ 2 hours • 🏅 Certificate • 🌐 Hindi/English</p>
+                                <div class="course-progress">
+                                    <span>Not started</span>
+                                </div>
+                            </div>
+                            <button class="btn btn--primary">Start Course</button>
+                        </div>
+                    </div>
+                    <div class="learning-category">
+                        <h3>💡 Best Practices</h3>
+                        <div class="course-card completed">
+                            <div class="course-info">
+                                <h4>Smart Procurement Strategies</h4>
+                                <p>⏱️ 1.5 hours • 🌐 Hindi/English</p>
+                                <div class="course-progress">
+                                    <span>✅ Completed</span>
+                                </div>
+                            </div>
+                            <button class="btn btn--outline">Review</button>
+                        </div>
+                    </div>
+                    <div class="learning-category">
+                        <h3>📈 Market Insights</h3>
+                        <div class="insight-card">
+                            <h4>Seasonal Buying Guide</h4>
+                            <p>Learn when to buy different ingredients for maximum savings</p>
+                            <button class="btn btn--outline">Read More</button>
+                        </div>
+                        <div class="insight-card">
+                            <h4>Storage Best Practices</h4>
+                            <p>Extend shelf life and reduce wastage with proper storage</p>
+                            <button class="btn btn--outline">Read More</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</div>
+<!-- Shopping Cart Modal -->
+<div id="cart-modal" class="modal hidden">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>🛒 Shopping Cart</h3>
+            <button class="modal-close">&times;</button>
+        </div>
+        <div class="modal-body">
+            <div class="cart-items">
+                <p>Your cart is empty</p>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn--outline">Continue Shopping</button>
+            <button class="btn btn--primary">Checkout</button>
+        </div>
+    </div>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
